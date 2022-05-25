@@ -179,4 +179,4 @@ if __name__ == "__main__":
     print("Dataframe shape after appending paths:", df_new_p_path.shape)
 
     # saving the expanded df_biopsied dataframe (with the paths columns) into a csv file:
-    df_new_p_path.to_csv("/mnt/seagate/DBT/duke-dbt-data_github/data/manifest-1617905855234/BCS-DBT labels-new-v0.csv", index = False)
+    df_new_p_path.to_csv("/mnt/seagate/DBT/manifest-1617905855234/BCS-DBT labels-new-v0.csv", index = False)
