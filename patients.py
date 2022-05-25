@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 # Reading the csv file with category labels, containing both the biopsied volumes (200) and the normal ones (+200): 
-df_labels = pd.read_csv("/mnt/seagate/DBT/duke-dbt-data_github/data/manifest-1617905855234/BCS-DBT labels-new-v0.csv")
+df_labels = pd.read_csv("data/BCS-DBT labels-new-v0.csv")
 
 # Printing to check the dataframe:
 # print(df_labels.head())

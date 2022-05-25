@@ -169,13 +169,13 @@ def df_add_desc_path(df, csv_paths):
 
 if __name__ == "__main__":
     # the seed = 42 was chosen arbitrarily :
-    df_new_p = csv_processed(csv_views ="/mnt/seagate/DBT/duke-dbt-data_github/data/manifest-1617905855234/BCS-DBT labels-train-v2.csv",
+    df_new_p = csv_processed(csv_views ="data/BCS-DBT labels-train-v2.csv",
                              r_seed=42)
 
     print("Dataframe shape after extension:", df_new_p.shape)
 
     df_new_p_path = df_add_desc_path(df = df_new_p,
-                                     csv_paths = "/mnt/seagate/DBT/duke-dbt-data_github/data/manifest-1617905855234/BCS-DBT file-paths-train-v2.csv")
+                                     csv_paths = "data/BCS-DBT file-paths-train-v2.csv")
     print("Dataframe shape after appending paths:", df_new_p_path.shape)
 
     # saving the expanded df_biopsied dataframe (with the paths columns) into a csv file:
