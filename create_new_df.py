@@ -170,7 +170,7 @@ def df_add_desc_path(df, csv_paths):
 if __name__ == "__main__":
     # the seed = 42 was chosen arbitrarily :
     df_new_p = csv_processed(csv_views ="/mnt/seagate/DBT/duke-dbt-data_github/data/manifest-1617905855234/BCS-DBT labels-train-v2.csv",
-                             r_seed=56)
+                             r_seed=42)
 
     print("Dataframe shape after extension:", df_new_p.shape)
 
