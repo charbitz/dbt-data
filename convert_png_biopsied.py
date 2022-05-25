@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 from duke_dbt_data import dcmread_image, read_boxes, draw_box
 
-datasource = "/mnt/seagate/DBT/duke-dbt-data_github/data/manifest-1617905855234"
+datasource = "/mnt/seagate/DBT/manifest-1617905855234"
 
 boxes_path = os.path.join(datasource, "BCS-DBT boxes-train-v2.csv")
 filepaths_path = os.path.join(datasource, "BCS-DBT file-paths-train-v2.csv")
@@ -60,12 +60,12 @@ for iter in range(len(paths_list_whole)):
   print("study:",study)
   print("view:", view)
 
-  specific_path = "saved_png_images/" + str(patient) + "/" + str(study)
+  specific_path = "saved_png_biopsied/" + str(patient) + "/" + str(study)
   os.makedirs(specific_path,exist_ok=True)
   image_read_path = os.path.join(datasource, paths_list_whole[iter])
 
   for slice in range(num_slices):
     image = dcmread_image(fp=image_read_path, view=view, index=slice)
     
-    write_path = "saved_png_images/" + str(patient) + "/" + str(study)
+    write_path = "saved_png_biopsied/" + str(patient) + "/" + str(study)
     cv2.imwrite(os.path.join(write_path , str(view.upper()) + "TomosynthesisReconstruction_" + str(slice) + "_.png"),image)
