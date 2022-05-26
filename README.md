@@ -1,2 +1,2 @@
 # dbt-data
-This is a repository for processing the data of Digital Breast Tomosynthesis.
+This is a repository for processing the Digital Breast Tomosynthesis dataset published by Duke University, Durham, NC.
