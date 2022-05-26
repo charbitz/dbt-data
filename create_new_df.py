@@ -29,7 +29,6 @@ def csv_processed(csv_views, r_seed):
             "Normal": np.int, "Actionable": np.int, "Benign": np.int, "Cancer": np.int})
 
     # The number of samples we want to expand our dataset :
-    num_samples = 200
     num_pat_l = 100
     num_pat_r = 100
 
