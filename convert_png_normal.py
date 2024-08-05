@@ -14,9 +14,6 @@ labels_path = os.path.join(datasource, "BCS-DBT labels-new-v0.csv")
 
 df_labels = pd.read_csv(labels_path)
 
-# We should also keep the volumslices information becase the may be handy later on.
-# Idea: create a dataframe and save it into csv_labels_w_slices.csv file in order to merge it later on with csv_labels_pr (in other words to append the column "VolumeSlices" to csv_labels_pr.scv file)
-# The column "Slice" can not be extracted. It may also be not necessary !
 
 # keep only the volumes from normal group (because the rest is already converted) :
 df_normal = df_labels[200:df_labels.shape[0]]
@@ -37,32 +34,15 @@ for ind in df_normal.index:
   # paths_list.append(df['descriptive_path'][ind])
   paths_list_whole.append(str_processed)
 
-
 import matplotlib
 import cv2
 import numpy as np
-
-# Create a copy of df to save the "VolumeSlices" info etc ... :
-#dfcop = df.copy()
-
-# copy all 3 basic columns:
-#dfcop = dfcop[['PatientID', 'StudyUID', "View"]]
-
-# keep only the extended rows:
-
-#dfcop = dfcop[200:400]
-
-# add a new column :
-#dfcop["VolumeSlices"] = np.nan
 
 for iter in range(len(paths_list_whole)):
   box_series = df_normal.iloc[iter]
   patient = box_series["PatientID"]
   study = box_series["StudyUID"]
   view = box_series["View"]
-
-  # num_slices = box_series["VolumeSlices"]
-  # slice_index = box_series["Slice"]
 
   print("volume:",iter)
   print("patient:", patient)
@@ -84,14 +64,3 @@ for iter in range(len(paths_list_whole)):
     image, num_slices = dcmread_image(fp=image_read_path, view=view, index=iter2)
     write_path = "saved_png_normal/" + str(patient) + "/" + str(study)          # extended_csv
     cv2.imwrite(os.path.join(write_path , str(view.upper()) + "TomosynthesisReconstruction_" + str(iter2) + "_.png"),image)
-
-    # except IndexError:
-    #   # Copy the
-    #   #dfcop["VolumeSlices"][iter] = iter2
-    #   pass
-    #   break
-
-# save the dfcop dataframe:
-#dfcop.to_csv("df_labels_w_slices.csv", index = False)
-
-

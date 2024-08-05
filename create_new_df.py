@@ -3,18 +3,9 @@
 #     * BCS-DBT boxes-train-v2.csv  : containing the bounding boxes ground truth ...for 224 bounding boxes...
 #     * BCS-DBT labels-train-v2.csv : containing the labels ground truth ...for 19148 volumes...
 
-# Some details about 224 in Biopsied cases:
-# 224 are the number of bounding boxes in Biopsied cases,
-# But the number of volumes in the Biopsied cases is 200
-
 # New csv files for use: 
 #     * BCS-DBT boxes-train-v2.csv  : containing the bounding boxes ground truth ...for 224 bounding boxes (=200 volumes)...(same as previously)
 #     * BCS-DBT labels-new-v0.csv          : containing the labels ground truth ...
-
-
-# New target:
-# Now we should append one more information to the file's "BCS-DBT labels-new-v0.csv" dataframe.
-# This is the columns "descriptive_path" (or "classic_path") from the "BCS-DBT file-paths-train-v2.csv" file.
 
 
 import numpy as np
@@ -56,7 +47,6 @@ def csv_processed(csv_views, r_seed):
     print()
 
     # Sample patients with left views :
-    # random.seed(r_seed)
     print("Sampling patients with left views:")
     df_sampled_left, pat_left_added = patients_sample(df_normal,
                                                       pat_normal_set,
@@ -72,7 +62,6 @@ def csv_processed(csv_views, r_seed):
         pat_normal_set.add(str(df_normal.loc[pat]["PatientID"]))
 
     # Sample patients with right views :
-    # random.seed(r_seed+10)
     print("Sampling patients with right views:")
     df_sampled_right, pat_right_added = patients_sample(df_normal,
                                                         pat_normal_no_left,
@@ -116,19 +105,11 @@ def patients_sample(df_normal, pat_normal_set, num_patients, target_values, r_se
     # Create a list with all numbers from 0 to 4108:
     random_list = list(np.arange(0, len(pat_normal_set)))
 
-    # random.seed(r_seed)
-
     # iterate till 100 patients added :
-    # for i in range(num_pat_l):
     while len(pat_added) < num_patients:
-        # sample a number 0 to 4109 :
-        # rnd_pat = int(random.sample(random_list, 1))
 
         random.seed(r_seed)
-        # np.random.seed(r_seed)
         rnd = random.sample(random_list, 1)
-
-        # print("random patient sampled:", rnd)
 
         rnd_pat = int(rnd[0])
 

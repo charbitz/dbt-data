@@ -46,10 +46,6 @@ import cv2
 import numpy as np
 
 for iter in range(len(paths_list)):     # for every path in paths_list : 
-# iters = [3,5,6,7,8,9,10,11,14]        # remaining volumes to save
-# iters = [10,11,14]                    # remaining volumes to save
-# for iter in iters:
-
   box_series = df.iloc[iter]
   patient = box_series["PatientID"]
   study = box_series["StudyUID"]

@@ -4,12 +4,6 @@ import numpy as np
 # Reading the csv file with category labels, containing both the biopsied volumes (200) and the normal ones (+200): 
 df_labels = pd.read_csv("data/BCS-DBT labels-new-v0.csv")
 
-# Printing to check the dataframe:
-# print(df_labels.head())
-# print()
-# print("df shape:", df_labels.shape)
-# print(df_labels.columns.tolist())
-
 # ~ ~ ~ Biopsied group: ~ ~ ~
 # Creating a set for all Patients in the biopsied :{"Benign", "Cancer"} groups:
 set_biopsied = set(df_labels[(df_labels["Benign"] == 1) | (df_labels["Cancer"] == 1)]["PatientID"])
@@ -24,15 +18,6 @@ print("Number of patients at the Normal group:", len(set_normal))
 set_final = set_biopsied.union(set_normal)
 print("Number of patients at all 3 groups:", len(set_final))
 print()
-
-# set_final = sorted(set_final)
-#
-# # Printing all unique patients:
-# for i in set_final:
-#   print(i)
-#
-# # Printing again:
-# print(set_final)
 
 set_triplets_norm = set()
 list_triplets_norm = []
